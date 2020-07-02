@@ -36,12 +36,15 @@ bool PlayGame(int Difficulty)
     if (GuessSum == CodeSum && GuessProduct == CodeProduct) 
     
     {
-        std::cout << "\nYou win";
+        if (Difficulty !=5 )
+        {
+             std::cout << "\nPlease move onto the next level";
+        }
         return true;
     }
     else 
     {
-        std::cout << "\nYou lose";
+        std::cout << "\nPlease try again";
         return false;
     }
 }
@@ -49,9 +52,11 @@ bool PlayGame(int Difficulty)
 int main()
 {   
     int LevelDifficulty = 1;
-    while (true)
+
+    const int MaxDifficulty = 5;
+
+    while (LevelDifficulty <= MaxDifficulty) //Loop game until all levels are completed
     {
-        
         bool bLevelComplete = PlayGame(LevelDifficulty);
         std::cin.clear(); //Clears any errors
         std::cin.ignore(); //Discards the buffer
@@ -60,9 +65,9 @@ int main()
         {
             ++LevelDifficulty;
         }
-        
-
     }
+
+    std::cout << "\nCongrats";
 
     return 0;
 }
